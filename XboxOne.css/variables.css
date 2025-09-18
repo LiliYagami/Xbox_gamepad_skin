@@ -1,0 +1,17 @@
+/* local-variables.css */
+
+:root {
+    --controller-button-image: url(./images_png/abxy.png);
+    --controller-background-image: url(./images_png/base.png);
+    --controller-bumper-image: url(./images_png/bumper_pressed.png);
+    --controller-bumper-image: url(./images_png/bumper.png);
+    --controller-disconnected-image: url(./images_png/disconnected.png);
+    --controller-face-image: url(./images_png/dpad.png);
+    --controller-quadrant-image: url(./images_png/quadrant.png);
+    --controller-start-image: url(./images_png/start_select_pressed.png);
+    --controller-start-image: url(./images_png/start-select.png);
+    --controller-stick-image: url(./images_png/stick.png);
+    --controller-trigger-image: url(./images_png/trigger.png);
+    /* --controller-touchpad-image: url(./images_png/logo.png); */
+    /* --controller-meta-pressed-image: url(./images_png/meta.png); */
+}
