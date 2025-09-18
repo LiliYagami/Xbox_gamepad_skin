@@ -1,6 +1,6 @@
 /*BEGIN Xbox One Controller Styling*/
 .controller.xbox {
-    background: url("https://liliyagami.github.io/gamepad_skin/images/base.png"); /* Image du contrôleur */
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/base.png"); /* Image du contrôleur */
     height: 630px;
     width: 750px;
     background-size: contain;
@@ -9,11 +9,11 @@
 }
 
 .xbox.white {
-    background: url("https://liliyagami.github.io/gamepad_skin/images/base.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/base.png");
 }
 
 .xbox.disconnected {
-    background: url("https://liliyagami.github.io/gamepad_skin/images/disconnected.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/disconnected.png");
 }
 
 .xbox.disconnected div {
@@ -32,7 +32,7 @@
 /* Style des boutons ABXY */
 .xbox .button {
     position: absolute;
-    background: url("https://liliyagami.github.io/gamepad_skin/images/abxy.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/abxy.png");
     width: 55px;
     height: 59px;
     background-size: contain;
@@ -102,7 +102,7 @@
     position: absolute;
     width: 45px;
     height: 45px;
-    background: url("https://liliyagami.github.io/gamepad_skin/images/quadrant.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/quadrant.png");
     background-size: contain;
     top: 258px;
     left: 363px;
@@ -126,7 +126,7 @@
 
 .xbox .stick {
     position: absolute;
-    background: url("https://liliyagami.github.io/gamepad_skin/images/stick.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/stick.png");
     background-size: cover;
     background-position: -112px 0px;
     height: 110.5px;
@@ -161,7 +161,7 @@
 .xbox .trigger {
     width: 88px;
     height: 121px;
-    background: url("https://liliyagami.github.io/gamepad_skin/images/trigger.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/trigger.png");
     filter: grayscale(100%);
     background-size: cover;
 }
@@ -187,7 +187,7 @@
     width: 170px;
     height: 61px;
     position: absolute;
-    background: url("https://liliyagami.github.io/gamepad_skin/images/bumper.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/bumper.png");
     background-size: contain;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .xbox .bumper.pressed {
-    background: url("https://liliyagami.github.io/gamepad_skin/images/bumper_pressed.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/bumper_pressed.png");
 }
 
 /* Start & Back */
@@ -212,7 +212,7 @@
 
 .xbox .back {
     position: absolute;
-    background: url("https://liliyagami.github.io/gamepad_skin/images/start-select.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start-select.png");
     background-repeat: no-repeat;
     background-size: 79px 38px ;
     background-position: -0.5px -0px;
@@ -223,7 +223,7 @@
 .xbox .start {
     position: absolute;
     left: 109px;
-    background: url("https://liliyagami.github.io/gamepad_skin/images/start-select.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start-select.png");
     background-repeat: no-repeat;
     background-size: 72.5px;
     background-position: -36.5px 1.7px;
@@ -232,14 +232,14 @@
 }
 
 .xbox .back.pressed {
-    background: url("https://liliyagami.github.io/gamepad_skin/images/start_select_pressed.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start_select_pressed.png");
     background-repeat: no-repeat;
     background-size: 79px 38px ;
     background-position: -0.5px -0px;
 }
 
 .xbox .start.pressed {
-    background: url("https://liliyagami.github.io/gamepad_skin/images/start_select_pressed.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start_select_pressed.png");
     background-repeat: no-repeat;
     background-size: 72.5px;
     background-position: -36.5px 1.7px;
@@ -255,7 +255,7 @@
 }
 
 .xbox .face {
-    background: url("https://liliyagami.github.io/gamepad_skin/images/dpad.png");
+    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/dpad.png");
     position: absolute;
 }
 
