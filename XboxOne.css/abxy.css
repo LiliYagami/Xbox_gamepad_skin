@@ -1,24 +1,28 @@
+/* abxy.css*/
+
 /*BEGIN Xbox One Controller Styling*/
 .controller.xbox {
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/base.png"); /* Image du contrôleur */
+    background: url(/images/base.png);/* Image du contrôleur */
     height: 630px;
     width: 750px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-size: contain; /* L'image sera redimensionnée pour s'adapter sans être coupée */
+    background-repeat: no-repeat; /* Empêche l'image de se répéter */
+    background-position: center; /* Centre l'image dans le conteneur */
 }
 
 .xbox.white {
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/base.png");
+    background: url(/images/base.png);
 }
 
 .xbox.disconnected {
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/disconnected.png");
+    background: url(/images/disconnected.png);
 }
 
 .xbox.disconnected div {
     display: none;
 }
+
+/* GERONS A PRESENT LES BOUTTONS AXBY ET LEUR POSITION SUR L'IMAGE  */
 
 /* Conteneur des boutons ABXY */
 .xbox .abxy {
@@ -31,91 +35,121 @@
 
 /* Style des boutons ABXY */
 .xbox .button {
+    background-color: rgba(0, 0, 0, 0.272);
     position: absolute;
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/abxy.png");
+    background: url(/images/abxy.png); 
     width: 55px;
     height: 59px;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-/* Positionnement des boutons ABXY état initial */
+/* Positionnement des boutons ABXY etat initial */
 .xbox .a {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: 95px;
     left: 51px;
-    background-size: 205px 120px;
-    background-position: 0 0;
+        background-size: 205px 120px;
+            background-position: 0 0;
 }
 
 .xbox .b {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: 44px;
     left: 101px;
-    background-size: 205px 120px;
-    background-position: -51px 0;
+        background-size: 205px 120px;
+            background-position: -51px 0;
+
 }
 
 .xbox .x {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: 45px;
     left: 0px;
-    background-size: 205px 120px;
-    background-position: -102px 0;
+        background-size: 205px 120px;
+            background-position: -102px 0;
 }
 
 .xbox .y {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: -6px;
     left: 50px;
-    background-size: 205px 120px;
-    background-position: -153px 0;
+        background-size: 205px 120px;
+            background-position: -153px 0;
 }
 
-/* Positionnement des boutons ABXY état appuyé */
+/* Positionnement des boutons ABXY etat appuyer */
 .xbox .a.pressed {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: 105px;
     left: 49px;
-    background-size: 205px 120px;
-    background-position: 3px -58px;
+        background-size: 205px 120px;
+            background-position: 3px -58px;
 }
 
 .xbox .b.pressed {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: 55px;
     left: 103px;
-    background-size: 205px 120px;
-    background-position: -51px -58px;
+        background-size: 205px 120px;
+            background-position: -51px -58px;
+
 }
 
 .xbox .x.pressed {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: 55px;
     left: -1px;
-    background-size: 205px 120px;
-    background-position: -101px -58px;
+        background-size: 205px 120px;
+            background-position: -101px -58px;
 }
 
 .xbox .y.pressed {
+        /* background-color: rgba(0, 0, 0, 0.272); */
     top: 3px;
     left: 51px;
-    background-size: 205px 120px;
-    background-position: -153px -57px;
+        background-size: 205px 120px;
+            background-position: -153px -57px;
 }
 
-/* Quadrant */
+/* GERONS A PRESENT LE CADRANT DES PERSONNE JOUANT POUR LA HYERARCHIE DES MANETTE */
+
 .xbox .quadrant {
     position: absolute;
     width: 45px;
     height: 45px;
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/quadrant.png");
+    background: url(/images/quadrant.png);
+    /* background-color: rgba(0, 0, 0, 0.432); */
     background-size: contain;
     top: 258px;
     left: 363px;
     z-index: 0;
 }
 
-.xbox .p0 { transform: rotate(0deg); }
-.xbox .p1 { transform: rotate(90deg); }
-.xbox .p2 { transform: rotate(270deg); }
-.xbox .p3 { transform: rotate(180deg); }
+.xbox .p0 {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
 
-/* Sticks */
+.xbox .p1 {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.xbox .p2 {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.xbox .p3 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/* GERONS A PRESENT LES JOYSTICK DE LA MANETTE */
+
 .xbox .sticks {
+    /* background-color: rgba(0, 0, 0, 0.144); */
     position: absolute;
     width: 402px;
     height: 229px;
@@ -125,10 +159,13 @@
 }
 
 .xbox .stick {
+    background-color: rgba(0, 0, 0, 0.701);
     position: absolute;
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/stick.png");
+    background: url(/images/stick.png);
     background-size: cover;
     background-position: -112px 0px;
+    /* background-position: 0 0; */
+    /* transform: scaleX(-1); */
     height: 110.5px;
     width: 110.5px;
 }
@@ -148,34 +185,49 @@
     transform: scaleX(-1);
 }
 
-/* Triggers */
+/* ON GERE A PRESENTENT LES triggers */
+
 .xbox .triggers {
+    /* background-color: rgba(0, 0, 0, 0.055); */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Espace égal entre les éléments */
     width: 446px;
     height: 121px;
     position: absolute;
     left: 159px;
 }
 
+
 .xbox .trigger {
+    /* background-color: rgba(255, 0, 0, 0.692); */
     width: 88px;
     height: 121px;
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/trigger.png");
+    /* background: url(/images/trigger.png); */
+    background: url(/images/trigger.png); /* L'image elle-même */
     filter: grayscale(100%);
     background-size: cover;
 }
 
-.xbox .trigger.left { background-position: 0 0; }
-.xbox .trigger.right { transform: rotateY(180deg); }
-
-.xbox .trigger.pressed {
-    filter: grayscale(0%) brightness(0.8);
-    transform: scale(0.95);
+.xbox .trigger.left {
+    float: left;
+    background-position: 0 0;
 }
 
-/* Bumpers */
+.xbox .trigger.right {
+    float: right;
+    transform: rotateY(180deg);
+}
+
+.xbox .trigger.pressed {
+    filter: grayscale(0%) brightness(0.8); /* Rendre l'image un peu plus sombre lorsqu'appuyée */
+    transform: scale(0.95); /* Légèrement réduire la taille pour donner un effet visuel de pression */
+}
+
+
+/* ON GERE A PRESENT LES BUMPERS */
+
 .xbox .bumpers {
+    /* background-color: rgba(129, 84, 84, 0.089); */
     position: absolute;
     width: 530px;
     height: 61px;
@@ -184,25 +236,32 @@
 }
 
 .xbox .bumper {
+    /* background-color: rgba(255, 0, 0, 0.164); */
     width: 170px;
     height: 61px;
     position: absolute;
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/bumper.png");
+    background: url(/images/bumper.png);
     background-size: contain;
 }
 
-.xbox .bumper.left { left: 0.3px; }
+.xbox .bumper.left {
+    left: 0.3px;
+}
+
 .xbox .bumper.right {
     left: 359px;
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
 .xbox .bumper.pressed {
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/bumper_pressed.png");
+    background: url(/images/bumper_presed.png);
 }
 
-/* Start & Back */
+/* ON GERE LE POUTON START,SELECT,BACK, PEUX IMPORTE COMMENT VOUS LES APELEZ ENTRE JOY LEFT ET X */
+
 .xbox .arrows {
+    /* background-color: rgba(255, 0, 0, 0.466); */
     position: absolute;
     width: 147px;
     height: 38px;
@@ -210,9 +269,10 @@
     left: 311.2px;
 }
 
-.xbox .back {
+.xbox .back{
+    /* border: 1px solid black; */
     position: absolute;
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start-select.png");
+    background: url(/images/start-select.png);
     background-repeat: no-repeat;
     background-size: 79px 38px ;
     background-position: -0.5px -0px;
@@ -220,10 +280,12 @@
     height: 39px;
 }
 
-.xbox .start {
+
+.xbox .start{
+    /* border: 1px solid rgb(208, 255, 0); */
     position: absolute;
     left: 109px;
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start-select.png");
+    background: url(/images/start-select.png);
     background-repeat: no-repeat;
     background-size: 72.5px;
     background-position: -36.5px 1.7px;
@@ -231,22 +293,32 @@
     height: 39px;
 }
 
-.xbox .back.pressed {
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start_select_pressed.png");
+.xbox .back.pressed{
+    position: absolute;
+    background: url(/images/start_select_pressed.png);
     background-repeat: no-repeat;
     background-size: 79px 38px ;
     background-position: -0.5px -0px;
+    width: 38px;
+    height: 39px;
 }
 
-.xbox .start.pressed {
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/start_select_pressed.png");
+
+.xbox .start.pressed{
+    position: absolute;
+    left: 109px;
+    background: url(/images/start_select_pressed.png);
     background-repeat: no-repeat;
     background-size: 72.5px;
     background-position: -36.5px 1.7px;
+    width: 38px;
+    height: 39px;
 }
 
-/* DPad */
+/* ON S'occupe a present des touches directionelles */
+
 .xbox .dpad {
+    /* background-color: rgba(255, 255, 255, 0.466); */
     position: absolute;
     width: 110px;
     height: 111px;
@@ -255,9 +327,11 @@
 }
 
 .xbox .face {
-    background: url("https://liliyagami.github.io/Xbox_gamepad_skin/images/dpad.png");
+    background-color: rgb(0, 0, 0);
+    background: url(/images/dpad.png);
     position: absolute;
 }
+
 
 .xbox .face.up {
     background-position: 34px 0;
@@ -290,7 +364,7 @@
     right: 0;
 }
 
-/* Popup notification */
+/* Style du Popup */
 .notification {
     position: fixed;
     bottom: 20px;
@@ -299,11 +373,16 @@
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
-    display: none;
+    display: none; /* Par défaut, le popup est caché */
     z-index: 9999;
     font-size: 14px;
     max-width: 300px;
 }
 
-.notification.show { display: block; }
-.notification p { margin: 0; }
+.notification.show {
+    display: block;
+}
+
+.notification p {
+    margin: 0;
+}
