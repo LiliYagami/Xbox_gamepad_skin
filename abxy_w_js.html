@@ -1,0 +1,325 @@
+<!-- abxy_w_js.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gamepad Viewer - Xbox One</title>
+  <link rel="stylesheet" href="variables.css">
+  <style>
+    /* ===============================
+       Xbox One Controller Styling
+    ================================ */
+
+    .controller.xbox {
+      background: url(/images_png/base.png) center/contain no-repeat;
+      height: 630px;
+      width: 750px;
+    }
+
+    .xbox.white {
+      background: url(images_png/base.png) center/contain no-repeat;
+    }
+
+    .xbox.disconnected {
+      background: url(images_png/disconnected.png) center/contain no-repeat;
+    }
+
+    .xbox.disconnected div {
+      display: none;
+    }
+
+    /* === Boutons ABXY === */
+    .xbox .abxy {
+      position: absolute;
+      width: 156px;
+      height: 156px;
+      top: 209px;
+      left: 497px;
+    }
+
+    .xbox .button {
+      position: absolute;
+      background: url(images_png/abxy.png) no-repeat center/contain;
+      width: 55px;
+      height: 59px;
+    }
+
+    .xbox .a { top: 95px; left: 51px; background-size: 205px 120px; background-position: 0 0; }
+    .xbox .b { top: 44px; left: 101px; background-size: 205px 120px; background-position: -51px 0; }
+    .xbox .x { top: 45px; left: 0px;  background-size: 205px 120px; background-position: -102px 0; }
+    .xbox .y { top: -6px; left: 50px; background-size: 205px 120px; background-position: -153px 0; }
+
+    .xbox .a.pressed { top: 105px; left: 49px; background-position: 3px -58px; }
+    .xbox .b.pressed { top: 55px;  left: 103px; background-position: -51px -58px; }
+    .xbox .x.pressed { top: 55px;  left: -1px; background-position: -101px -58px; }
+    .xbox .y.pressed { top: 3px;   left: 51px; background-position: -153px -57px; }
+
+    /* === Quadrant (LED joueur) === */
+    .xbox .quadrant {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      background: url(images_png/quadrant.png) center/contain no-repeat;
+      top: 258px;
+      left: 363px;
+      z-index: 0;
+    }
+
+    .xbox .p0 { transform: rotate(0deg); }
+    .xbox .p1 { transform: rotate(90deg); }
+    .xbox .p2 { transform: rotate(270deg); }
+    .xbox .p3 { transform: rotate(180deg); }
+
+    /* === Joysticks === */
+    .xbox .sticks {
+    position: absolute;
+    width: 402px;
+    height: 229px;
+    top: 232px;
+    left: 137px;
+    }
+
+    .xbox .stick {
+    position: absolute;
+    width: 110.5px;
+    height: 110.5px;
+    background: url(images_png/stick.png);
+    background-size: cover;
+    background-position: -112px 0;
+    }
+
+    .xbox .stick.left  { top: 0.3px;  left: 0.7px; }
+    .xbox .stick.right { top: 114px;  left: 288.2px; }
+    .xbox .stick.pressed { background-position: 0 0; }
+
+    /* === Triggers (LT/RT) === */
+    .xbox .triggers {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 446px;
+    height: 121px;
+    left: 159px;
+    }
+
+    .xbox .trigger {
+    width: 88px;
+    height: 121px;
+    background: url(images_png/trigger.png);
+    background-size: cover;
+    filter: grayscale(100%);
+    }
+
+    .xbox .trigger.left  { background-position: 0 0; }
+    .xbox .trigger.right { transform: rotateY(180deg); }
+
+    .xbox .trigger.left.pressed  { filter: grayscale(0%); transform: scale(0.95); }
+    .xbox .trigger.right.pressed { filter: grayscale(0%); transform: rotateY(180deg) scale(0.95); }
+
+
+    /* === Bumpers (LB/RB) === */
+    .xbox .bumpers {
+      position: absolute;
+      width: 530px;
+      height: 61px;
+      top: 137.4px;
+      left: 119px;
+    }
+
+    .xbox .bumper {
+      position: absolute;
+      width: 170px;
+      height: 61px;
+      background: url(images_png/bumper.png) no-repeat center/contain;
+    }
+
+    .xbox .bumper.left  { left: -1.9px; }
+    .xbox .bumper.right { left: 359px; transform: rotateY(180deg); }
+
+    .xbox .bumper.left.pressed  { background: url(images_png/bumper_pressed.png) no-repeat center/contain; }
+    .xbox .bumper.right.pressed { background: url(images_png/bumper_pressed.png) no-repeat center/contain; transform: rotateY(180deg); }
+
+    /* === Start / Back === */
+    .xbox .arrows {
+      position: absolute;
+      width: 147px;
+      height: 38px;
+      top: 268.9px;
+      left: 311.2px;
+    }
+
+    .xbox .back, .xbox .start {
+      position: absolute;
+      width: 38px;
+      height: 39px;
+      background: url(images_png/start_select.png) no-repeat;
+    }
+
+    .xbox .back  { background-size: 79px 38px; background-position: -0.5px 0; }
+    .xbox .start { left: 109px; background-size: 72.5px; background-position: -36.5px 1.7px; }
+
+    .xbox .back.pressed  { background: url(images_png/start_select_pressed.png) no-repeat -0.5px 0 / 79px 38px; }
+    .xbox .start.pressed { background: url(images_png/start_select_pressed.png) no-repeat -36.5px 1.7px / 72.5px; }
+
+    /* === D-Pad === */
+    .xbox .dpad {
+      position: absolute;
+      width: 110px;
+      height: 111px;
+      top: 353px;
+      left: 231px;
+    }
+
+    .xbox .face {
+      position: absolute;
+      background: url(images_png/dpad.png);
+    }
+
+    .xbox .face.up    { left: 38px; top: 0;   width: 34px; height: 56px; background-position: 34px 0; }
+    .xbox .face.down  { left: 38px; bottom: 0; width: 34px; height: 56px; }
+    .xbox .face.left  { top: 38px; left: 0;   width: 55px; height: 35px; background-position: 0 -93px; }
+    .xbox .face.right { top: 38px; right: 0;  width: 55px; height: 35px; background-position: 0 -57px; }
+
+    .xbox .face.up.pressed    { background: url(images_png/dpad_pressed.png) no-repeat 34px 0 / auto; }
+    .xbox .face.down.pressed  { background: url(images_png/dpad_pressed.png) no-repeat; }
+    .xbox .face.left.pressed  { background: url(images_png/dpad_pressed.png) no-repeat 0 -93px; }
+    .xbox .face.right.pressed { background: url(images_png/dpad_pressed.png) no-repeat 0 -57px; }
+
+    /* === Popup Notification === */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      max-width: 300px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 14px;
+      border-radius: 5px;
+      display: none;
+      z-index: 9999;
+    }
+
+    .notification.show { display: block; }
+    .notification p { margin: 0; }
+  </style>
+</head>
+<body>
+  <!-- Structure contrôleur -->
+  <div class="controller xbox">
+    <div class="abxy">
+      <div class="button a"></div>
+      <div class="button b"></div>
+      <div class="button x"></div>
+      <div class="button y"></div>
+    </div>
+
+    <div class="triggers">
+      <div class="trigger left"></div>
+      <div class="trigger right"></div>
+    </div>
+
+    <div class="bumpers">
+      <div class="bumper left"></div>
+      <div class="bumper right"></div>
+    </div>
+
+    <div class="quadrant p0"></div>
+
+    <div class="arrows">
+      <div class="back"></div>
+      <div class="start"></div>
+    </div>
+
+    <div class="sticks">
+      <div class="stick left"></div>
+      <div class="stick right"></div>
+    </div>
+
+    <div class="dpad">
+      <div class="face up"></div>
+      <div class="face down"></div>
+      <div class="face left"></div>
+      <div class="face right"></div>
+    </div>
+
+    <div id="gamepad-notification" class="notification">
+      <p id="gamepad-status">Aucun gamepad connecté</p>
+      <p id="gamepad-info"></p>
+    </div>
+  </div>
+
+  <script>
+    const controller = document.querySelector('.controller.xbox');
+    const statusElement = document.getElementById('gamepad-status');
+    let prevButtonsState = [];
+
+    const buttonMap = {
+      0: ".a", 1: ".b", 2: ".x", 3: ".y",
+      4: ".bumper.left", 5: ".bumper.right",
+      6: ".trigger.left", 7: ".trigger.right",
+      8: ".back", 9: ".start",
+      10: ".stick.left", 11: ".stick.right",
+      12: ".face.up", 13: ".face.down",
+      14: ".face.left", 15: ".face.right"
+    };
+
+    function setControllerState(connected) {
+      controller.classList.toggle('disconnected', !connected);
+      statusElement.textContent = connected ? "Gamepad connecté" : "Aucun gamepad connecté";
+    }
+
+    function updateButtons(gp) {
+      gp.buttons.forEach((btn, i) => {
+        const element = document.querySelector(buttonMap[i]);
+        if (element) element.classList.toggle("pressed", btn.pressed);
+        prevButtonsState[i] = btn.pressed;
+      });
+    }
+
+    function updateSticks(gp) {
+      const range = 25; // amplitude max en pixels
+      const [xLeft, yLeft, xRight, yRight] = gp.axes;
+
+      const leftStick = document.querySelector(".stick.left");
+      const rightStick = document.querySelector(".stick.right");
+
+      if (leftStick) leftStick.style.transform = `translate(${xLeft * range}px, ${yLeft * range}px)`;
+      if (rightStick) rightStick.style.transform = `translate(${xRight * range}px, ${yRight * range}px)`;
+    }
+
+    function updateGamepad() {
+      const gp = navigator.getGamepads()[0];
+      if (gp) {
+        setControllerState(true);
+        updateButtons(gp);
+        updateSticks(gp);
+      } else {
+        setControllerState(false);
+      }
+      requestAnimationFrame(updateGamepad);
+    }
+
+    function checkInitialGamepad() {
+      const gp = navigator.getGamepads()[0];
+      setControllerState(!!gp);
+      prevButtonsState = gp ? gp.buttons.map(b => b.pressed) : [];
+    }
+
+    window.addEventListener("gamepadconnected", e => {
+      console.log("Gamepad connecté:", e.gamepad);
+      setControllerState(true);
+      prevButtonsState = e.gamepad.buttons.map(b => b.pressed);
+    });
+
+    window.addEventListener("gamepaddisconnected", e => {
+      console.log("Gamepad déconnecté:", e.gamepad);
+      setControllerState(false);
+      prevButtonsState = [];
+    });
+
+    checkInitialGamepad();
+    requestAnimationFrame(updateGamepad);
+  </script>
+</body>
+</html>
