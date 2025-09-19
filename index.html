@@ -1,0 +1,687 @@
+<!-- abxy_abxy.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamepad Viewer - Xbox One</title>
+    <link rel="stylesheet" href="variables.css">
+    <style>
+        /* abxy.css*/
+
+        /*BEGIN Xbox One Controller Styling*/
+        .controller.xbox {
+            background: url(images_png/base.png); /* Image du contrôleur */
+            height: 630px;
+            width: 750px;
+            background-size: contain; /* L'image sera redimensionnée pour s'adapter sans être coupée */
+            background-repeat: no-repeat; /* Empêche l'image de se répéter */
+            background-position: center; /* Centre l'image dans le conteneur */
+            /* display: none; */
+        }
+
+        .xbox.white {
+            background: url(images_png/base.png);
+            /* display: none; */
+        }
+
+        .xbox.disconnected {
+            background: url(images_png/disconnected.png);
+            /* display: none; */
+        }
+
+        .xbox.disconnected div {
+            display: none;
+            /* display: none; */
+        }
+
+        /* GERONS A PRESENT LES BOUTTONS AXBY ET LEUR POSITION SUR L'IMAGE  */
+
+        /* Conteneur des boutons ABXY */
+        .xbox .abxy {
+            position: absolute;
+            width: 156px;
+            height: 156px;
+            top: 209px;
+            left: 497px;
+            /* display: none; */
+        }
+
+        /* Style des boutons ABXY */
+        .xbox .button {
+            background-color: rgba(0, 0, 0, 0.272);
+            position: absolute;
+            background: url(images_png/abxy.png); 
+            width: 55px;
+            height: 59px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* display: none; */
+        }
+
+        /* Positionnement des boutons ABXY etat initial */
+        .xbox .a {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: 95px;
+            left: 51px;
+                background-size: 205px 120px;
+                    background-position: 0 0;
+                    /* display: none; */
+        }
+
+        .xbox .b {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: 44px;
+            left: 101px;
+                background-size: 205px 120px;
+                    background-position: -51px 0;
+                    /* display: none; */
+
+        }
+
+        .xbox .x {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: 45px;
+            left: 0px;
+                background-size: 205px 120px;
+                    background-position: -102px 0;
+                    /* display: none; */
+        }
+
+        .xbox .y {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: -6px;
+            left: 50px;
+                background-size: 205px 120px;
+                    background-position: -153px 0;
+                    /* display: none; */
+        }
+
+        /* Positionnement des boutons ABXY etat appuyer */
+        .xbox .a.pressed {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: 105px;
+            left: 49px;
+                background-size: 205px 120px;
+                    background-position: 3px -58px;
+                    /* display: none; */
+        }
+
+        .xbox .b.pressed {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: 55px;
+            left: 103px;
+                background-size: 205px 120px;
+                    background-position: -51px -58px;
+                    /* display: none; */
+        }
+
+        .xbox .x.pressed {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: 55px;
+            left: -1px;
+                background-size: 205px 120px;
+                    background-position: -101px -58px;
+                    /* display: none; */
+        }
+
+        .xbox .y.pressed {
+                /* background-color: rgba(0, 0, 0, 0.272); */
+            top: 3px;
+            left: 51px;
+                background-size: 205px 120px;
+                    background-position: -153px -57px;
+                    /* display: none; */
+        }
+
+        /* GERONS A PRESENT LE CADRANT DES PERSONNE JOUANT POUR LA HYERARCHIE DES MANETTE */
+
+        .xbox .quadrant {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background: url(images_png/quadrant.png);
+            /* background-color: rgba(0, 0, 0, 0.432); */
+            background-size: contain;
+            top: 258px;
+            left: 363px;
+            z-index: 0;
+            /* display: none; */
+        }
+
+        .xbox .p0 {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            /* display: none; */
+        }
+
+        .xbox .p1 {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            /* display: none; */
+        }
+
+        .xbox .p2 {
+            -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+            /* display: none; */
+        }
+
+        .xbox .p3 {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            /* display: none; */
+        }
+
+        /* GERONS A PRESENT LES JOYSTICK DE LA MANETTE */
+
+        .xbox .sticks {
+            /* background-color: rgba(0, 0, 0, 0.144); */
+            position: absolute;
+            width: 402px;
+            height: 229px;
+            top: 232px;
+            left: 137px;
+            background-size: contain;
+            /* display: none; */
+        }
+
+        .xbox .stick {
+            background-color: rgba(0, 0, 0, 0.701);
+            position: absolute;
+            background: url(images_png/stick.png);
+            background-size: cover;
+            background-position: -112px 0px;
+            /* background-position: 0 0; */
+            /* transform: scaleX(-1); */
+            height: 110.5px;
+            width: 110.5px;
+            /* display: none; */
+        }
+
+        .xbox .stick.left {
+            top: 0.3px;
+            left: 0.7px;
+            /* display: none; */
+        }
+
+        .xbox .stick.right {
+            top: 114px;
+            left: 288.2px;
+            /* display: none; */
+        }
+
+        .xbox .stick.pressed {
+            background-position: 0 0;
+            /*transform: scaleX(-1);*/
+            /* display: none; */
+        }
+
+        /*ON GERE A PRESENTENT LES triggers*/
+
+        .xbox .triggers {
+            /* background-color: rgba(0, 0, 0, 0.055); */
+            display: flex;
+            justify-content: space-between; /* Espace égal entre les éléments */
+            width: 446px;
+            height: 121px;
+            position: absolute;
+            left: 159px;
+            /* display: none; */
+        }
+
+        .xbox .trigger {
+            /* background-color: rgba(255, 0, 0, 0.692); */
+            width: 88px;
+            height: 121px;
+            background: url(images_png/trigger.png); /* L'image elle-même */
+            filter: grayscale(100%);
+            background-size: cover;
+            /* display: none; */
+        }
+
+        .xbox .trigger.left {
+            float: left;
+            background-position: 0 0;
+            /* display: none; */
+        }
+
+        .xbox .trigger.right {
+            float: right;
+            transform: rotateY(180deg);
+            /* display: none; */
+        }
+
+        /* État pressé Trigger gauche */
+        .xbox .trigger.left.pressed {
+            filter: grayscale(0%);
+            transform: scale(0.95); /* effet pressé */
+            /* display: none; */
+        }
+
+        /* État pressé Trigger droite */
+        .xbox .trigger.right.pressed {
+            filter: grayscale(0%);
+            transform: rotateY(180deg) scale(0.95); /* conserve la rotation initiale */
+            /* display: none; */
+        }
+
+
+
+        /* ON GERE A PRESENT LES BUMPERS */
+
+        .xbox .bumpers {
+            /* background-color: rgba(129, 84, 84, 0.089); */
+            position: absolute;
+            width: 530px;
+            height: 61px;
+            top: 137.4px;
+            left: 119px;
+            /* display: none; */
+        }
+
+        .xbox .bumper {
+            /* background-color: rgba(255, 0, 0, 0.164); */
+            width: 170px;
+            height: 61px;
+            position: absolute;
+            background: url(images_png/bumper.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* display: none; */
+        }
+
+        .xbox .bumper.left {
+            left: 0px;
+            /* display: none; */
+        }
+
+        .xbox .bumper.right {
+            left: 359px;
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            /* display: none; */
+        }
+
+        /* Bumper gauche pressé */
+        .xbox .bumper.left.pressed {
+            background: url(images_png/bumper_pressed.png);
+            left: 0.3px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* display: none; */
+        }
+
+        /* Bumper droit pressé */
+        .xbox .bumper.right.pressed {
+            background: url(images_png/bumper_pressed.png);
+            left: 359px;
+            transform: rotateY(180deg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* display: none; */
+        }
+
+        /* ON GERE LE POUTON START,SELECT,BACK, PEUX IMPORTE COMMENT VOUS LES APELEZ ENTRE JOY LEFT ET X */
+
+        .xbox .arrows {
+            /* background-color: rgba(255, 0, 0, 0.466); */
+            position: absolute;
+            width: 147px;
+            height: 38px;
+            top: 268.9px;
+            left: 311.2px;
+            /* display: none; */
+        }
+
+        .xbox .back{
+            /* border: 1px solid black; */
+            position: absolute;
+            background: url(images_png/start_select.png);
+            background-repeat: no-repeat;
+            background-size: 79px 38px ;
+            background-position: -0.5px -0px;
+            width: 38px;
+            height: 39px;
+            /* display: none; */
+        }
+
+
+        .xbox .start{
+            /* border: 1px solid rgb(208, 255, 0); */
+            position: absolute;
+            left: 109px;
+            background: url(images_png/start_select.png);
+            background-repeat: no-repeat;
+            background-size: 72.5px;
+            background-position: -36.5px 1.7px;
+            width: 38px;
+            height: 39px;
+            /* display: none; */
+        }
+
+        .xbox .back.pressed{
+            position: absolute;
+            background: url(images_png/start_select_pressed.png);
+            background-repeat: no-repeat;
+            background-size: 79px 38px ;
+            background-position: -0.5px -0px;
+            width: 38px;
+            height: 39px;
+            /* display: none; */
+        }
+
+
+        .xbox .start.pressed{
+            position: absolute;
+            left: 109px;
+            background: url(images_png/start_select_pressed.png);
+            background-repeat: no-repeat;
+            background-size: 72.5px;
+            background-position: -36.5px 1.7px;
+            width: 38px;
+            height: 39px;
+            /* display: none; */
+        }
+
+        /* ON S'occupe a present des touches directionelles */
+
+        .xbox .dpad {
+            /* background-color: rgba(255, 255, 255, 0.466); */
+            position: absolute;
+            width: 110px;
+            height: 111px;
+            top: 353px;
+            left: 231px;
+            /* display: none; */
+        }
+
+        .xbox .face {
+            /* background-color: rgb(0, 0, 0); */
+            background: url(images_png/dpad.png);
+            position: absolute;
+            /* display: none; */
+        }
+
+
+        .xbox .face.up {
+            background-position: 34px 0;
+            width: 34px;
+            height: 56px;
+            left: 38px;
+            top: 0px;
+            /* display: none; */
+        }
+
+        .xbox .face.down {
+            width: 34px;
+            height: 56px;
+            left: 38px;
+            bottom: 0;
+            /* display: none; */
+        }
+
+        .xbox .face.left {
+            background-position: 0 -93px;
+            width: 55px;
+            height: 35px;
+            top: 38px;
+            left: 0;
+            /* display: none; */
+        }
+
+        .xbox .face.right {
+            background-position: 0 -57px;
+            width: 55px;
+            height: 35px;
+            top: 38px;
+            right: 0;
+            /* display: none; */
+        }
+
+        /* États pressés pour le DPad */
+
+        .xbox .face.up.pressed {
+            background: url(images_png/dpad_pressed.png);
+            background-position: 34px 0;
+            width: 34px;
+            height: 56px;
+            left: 38px;
+            top: 0px;
+            position: absolute;
+            /* display: none; */
+        }
+
+        .xbox .face.down.pressed {
+            background: url(images_png/dpad_pressed.png);
+            width: 34px;
+            height: 56px;
+            left: 38px;
+            bottom: 0;
+            position: absolute;
+            /* display: none; */
+        }
+
+        .xbox .face.left.pressed {
+            background: url(images_png/dpad_pressed.png);
+            background-position: 0 -93px;
+            width: 55px;
+            height: 35px;
+            top: 38px;
+            left: 0;
+            position: absolute;
+            /* display: none; */
+        }
+
+        .xbox .face.right.pressed {
+            background: url(images_png/dpad_pressed.png);
+            background-position: 0 -57px;
+            width: 55px;
+            height: 35px;
+            top: 38px;
+            right: 0;
+            position: absolute;
+            /* display: none; */
+        }
+
+
+        /* Style du Popup */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;/*  Par défaut, le popup est caché */
+            z-index: 9999;
+            font-size: 14px;
+            max-width: 300px;
+            /* display: none; */
+        }
+
+        .notification.show {
+            display: block;
+            /* display: none; */
+        }
+
+        .notification p {
+            margin: 0;
+            /* display: none; */
+        }
+    </style>
+</head>
+<body>
+    <div class="controller xbox">
+        <!-- ABXY -->
+        <div class="abxy">
+            <div class="button a"></div>
+            <div class="button b"></div>
+            <div class="button x"></div>
+            <div class="button y"></div>
+        </div>
+
+        <!-- Triggers -->
+        <div class="triggers">
+            <div class="trigger left"></div>
+            <div class="trigger right"></div>
+        </div>
+
+        <!-- Bumpers -->
+        <div class="bumpers">
+            <div class="bumper left"></div>
+            <div class="bumper right"></div>
+        </div>
+
+        <!-- Quadrant -->
+        <div class="quadrant p0"></div>
+
+        <!-- Start & Back -->
+        <div class="arrows">
+            <div class="back"></div>
+            <div class="start"></div>
+        </div>
+
+        <!-- Sticks -->
+        <div class="sticks">
+            <div class="stick left"></div>
+            <div class="stick right"></div>
+        </div>
+
+        <!-- DPad -->
+        <div class="dpad">
+            <div class="face up"></div>
+            <div class="face down"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+        </div>
+
+        <!-- Popup de notification -->
+        <div id="gamepad-notification" class="notification">
+            <p id="gamepad-status">Aucun gamepad connecté</p>
+            <p id="gamepad-info"></p>
+        </div>
+    </div>
+
+    <script>
+    const controller = document.querySelector('.controller.xbox');
+    const statusElement = document.getElementById('gamepad-status');
+
+    let prevButtonsState = [];
+
+    // Mapping boutons aux éléments CSS
+    const buttonMap = {
+        0: ".a",       // A
+        1: ".b",       // B
+        2: ".x",       // X
+        3: ".y",       // Y
+        4: ".bumper.left",   // LB
+        5: ".bumper.right",  // RB
+        6: ".trigger.left",  // LT
+        7: ".trigger.right", // RT
+        8: ".back",          // Back
+        9: ".start",         // Start
+        10: ".stick.left",   // Stick gauche
+        11: ".stick.right",  // Stick droit
+        12: ".face.up",      // DPad Haut
+        13: ".face.down",    // DPad Bas
+        14: ".face.left",    // DPad Gauche
+        15: ".face.right"    // DPad Droite
+    };
+
+    // Met à jour l'état visuel du contrôleur
+    function setControllerState(connected) {
+        if (connected) {
+            controller.classList.remove('disconnected');
+            statusElement.textContent = "Gamepad connecté";
+        } else {
+            controller.classList.add('disconnected');
+            statusElement.textContent = "Aucun gamepad connecté";
+        }
+    }
+
+    // Met à jour les boutons
+    function updateButtons(gp) {
+        gp.buttons.forEach((btn, i) => {
+            const elementSelector = buttonMap[i];
+            if (!elementSelector) return;
+
+            const element = document.querySelector(elementSelector);
+            if (!element) return;
+
+            element.classList.toggle("pressed", btn.pressed);
+
+            // Sauvegarde l'état pour la prochaine frame
+            prevButtonsState[i] = btn.pressed;
+        });
+    }
+
+    function updateSticks(gp) {
+        // Stick gauche
+        const leftStick = document.querySelector(".stick.left");
+        const xLeft = gp.axes[0]; // -1 à 1
+        const yLeft = gp.axes[1]; // -1 à 1
+
+        // Stick droit
+        const rightStick = document.querySelector(".stick.right");
+        const xRight = gp.axes[2];
+        const yRight = gp.axes[3];
+
+        // Facteur d’amplification (px)
+        const range = 25; // combien de pixels max le stick peut bouger
+
+        if (leftStick) {
+            leftStick.style.transform = `translate(${xLeft * range}px, ${yLeft * range}px)`;
+        }
+        if (rightStick) {
+            rightStick.style.transform = `translate(${xRight * range}px, ${yRight * range}px)`;
+        }
+    }
+
+
+    // Boucle principale
+    function updateGamepad() {
+        const gamepads = navigator.getGamepads();
+        const gp = gamepads[0];
+
+        if (!gp) {
+            setControllerState(false);
+        } else {
+            setControllerState(true);
+            updateButtons(gp);
+            updateSticks(gp);
+        }
+
+        requestAnimationFrame(updateGamepad);
+    }
+
+    // Vérifie à l'ouverture si une manette est déjà connectée
+    function checkInitialGamepad() {
+        const gamepads = navigator.getGamepads();
+        if (gamepads[0]) {
+            setControllerState(true);
+            prevButtonsState = gamepads[0].buttons.map(b => b.pressed);
+        } else {
+            setControllerState(false);
+        }
+    }
+
+    // Événements de connexion/déconnexion
+    window.addEventListener("gamepadconnected", (e) => {
+        console.log("Gamepad connecté:", e.gamepad);
+        setControllerState(true);
+        prevButtonsState = e.gamepad.buttons.map(b => b.pressed);
+    });
+
+    window.addEventListener("gamepaddisconnected", (e) => {
+        console.log("Gamepad déconnecté:", e.gamepad);
+        setControllerState(false);
+        prevButtonsState = [];
+    });
+
+    // Démarre la boucle
+    checkInitialGamepad();
+    requestAnimationFrame(updateGamepad);
+    </script>
+</body>
+</html>
