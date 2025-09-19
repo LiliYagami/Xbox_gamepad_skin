@@ -16,7 +16,10 @@
             background-size: contain; /* L'image sera redimensionnée pour s'adapter sans être coupée */
             background-repeat: no-repeat; /* Empêche l'image de se répéter */
             background-position: center; /* Centre l'image dans le conteneur */
-            /* display: none; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .xbox.white {
@@ -41,8 +44,8 @@
             position: absolute;
             width: 156px;
             height: 156px;
-            top: 209px;
-            left: 497px;
+            top: 200px;
+            left: 488.5px;
             /* display: none; */
         }
 
@@ -70,7 +73,7 @@
 
         .xbox .b {
                 /* background-color: rgba(0, 0, 0, 0.272); */
-            top: 44px;
+            top: 45px;
             left: 101px;
                 background-size: 205px 120px;
                     background-position: -51px 0;
@@ -90,7 +93,7 @@
         .xbox .y {
                 /* background-color: rgba(0, 0, 0, 0.272); */
             top: -6px;
-            left: 50px;
+            left: 51.5px;
                 background-size: 205px 120px;
                     background-position: -153px 0;
                     /* display: none; */
@@ -140,10 +143,9 @@
             width: 45px;
             height: 45px;
             background: url(images_png/quadrant.png);
-            /* background-color: rgba(0, 0, 0, 0.432); */
             background-size: contain;
-            top: 258px;
-            left: 363px;
+            top: 243px;
+            left: 353px;
             z-index: 0;
             /* display: none; */
         }
@@ -179,8 +181,8 @@
             position: absolute;
             width: 402px;
             height: 229px;
-            top: 232px;
-            left: 137px;
+            top: 229px;
+            left: 130px;
             background-size: contain;
             /* display: none; */
         }
@@ -190,7 +192,7 @@
             position: absolute;
             background: url(images_png/stick.png);
             background-size: cover;
-            background-position: -112px 0px;
+            background-position: -111px 0px;
             /* background-position: 0 0; */
             /* transform: scaleX(-1); */
             height: 110.5px;
@@ -205,7 +207,7 @@
         }
 
         .xbox .stick.right {
-            top: 114px;
+            top: 110.5px;
             left: 288.2px;
             /* display: none; */
         }
@@ -225,8 +227,7 @@
             width: 446px;
             height: 121px;
             position: absolute;
-            left: 159px;
-            /* display: none; */
+            left: 150px;
         }
 
         .xbox .trigger {
@@ -274,8 +275,8 @@
             position: absolute;
             width: 530px;
             height: 61px;
-            top: 137.4px;
-            left: 119px;
+            top: 130px;
+            left: 110px;
             /* display: none; */
         }
 
@@ -291,12 +292,13 @@
         }
 
         .xbox .bumper.left {
-            left: 0px;
+            top: -0.5px;
+            left: 0.7px;
             /* display: none; */
         }
 
         .xbox .bumper.right {
-            left: 359px;
+            left: 360px;
             -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
             /* display: none; */
@@ -328,8 +330,8 @@
             position: absolute;
             width: 147px;
             height: 38px;
-            top: 268.9px;
-            left: 311.2px;
+            top: 261px;
+            left: 302.97px;
             /* display: none; */
         }
 
@@ -390,8 +392,8 @@
             position: absolute;
             width: 110px;
             height: 111px;
-            top: 353px;
-            left: 231px;
+            top: 346px;
+            left: 222.9px;
             /* display: none; */
         }
 
@@ -509,6 +511,8 @@
             margin: 0;
             /* display: none; */
         }
+
+
     </style>
 </head>
 <body>
